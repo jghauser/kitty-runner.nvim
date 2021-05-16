@@ -84,11 +84,11 @@ function M.clear_runner()
 end
 
 local function define_commands()
-  cmd[[command! KittyReRunCommand lua require('custom_plugins.kittyrunner').re_run_command()]]
-  cmd[[command! -range KittySendLines lua require('custom_plugins.kittyrunner').run_command(vim.region(0, vim.fn.getpos("'<"), vim.fn.getpos("'>"), "l", false)[0])]]
-  cmd[[command! KittyRunCommand lua require('custom_plugins.kittyrunner').prompt_run_command()]]
-  cmd[[command! KittyClearRunner lua require('custom_plugins.kittyrunner').clear_runner()]]
-  cmd[[command! KittyKillRunner lua require('custom_plugins.kittyrunner').kill_runner()]]
+  cmd[[command! KittyReRunCommand lua require('kitty-runner').re_run_command()]]
+  cmd[[command! -range KittySendLines lua require('kitty-runner').run_command(vim.region(0, vim.fn.getpos("'<"), vim.fn.getpos("'>"), "l", false)[0])]]
+  cmd[[command! KittyRunCommand lua require('kitty-runner').prompt_run_command()]]
+  cmd[[command! KittyClearRunner lua require('kitty-runner').clear_runner()]]
+  cmd[[command! KittyKillRunner lua require('kitty-runner').kill_runner()]]
 end
 
 local function define_keymaps()
