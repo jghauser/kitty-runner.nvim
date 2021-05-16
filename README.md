@@ -26,12 +26,12 @@ This plugin may require neovim 0.5.
 With packer:
 
 ```
-  use {
-    'jghauser/kitty-runner.nvim',
-    config = function()
-      require('kitty-runner').setup()
-    end
-  }
+use {
+  'jghauser/kitty-runner.nvim',
+  config = function()
+    require('kitty-runner').setup()
+  end
+}
 ```
 
 ## Configuration
