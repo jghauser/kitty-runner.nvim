@@ -29,7 +29,7 @@ With packer:
   use {
     'jghauser/kitty-runner.nvim',
     config = function()
-      require('kittyrunner').setup()
+      require('kitty-runner').setup()
     end
   }
 ```
