@@ -8,7 +8,7 @@ It currently (attempts) to do the following:
 - When first running `:KittySendLines` or `:KittyRunCommand`, a new kitty terminal is spawned (the 'runner').
 - Further instances of running these commenands do the following
   - `:KittySendLines`: Sends the line of the current cursor position or current visual selection.
-  - `:KittyRunCommand [command]`: Sends the selected command.
+  - `:KittyRunCommand`: Prompts for a command and sends it.
 - `:KittyReRunCommand`: Sends the last command.
 - `:KittyClearRunner`: Clears the screen of the runner terminal.
 - `:KittyKillRunner`: Kills the runner terminal.
