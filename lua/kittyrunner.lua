@@ -63,7 +63,7 @@ function M.prompt_run_command()
   fn.inputsave()
   local command = fn.input("Command: ")
   fn.inputrestore()
-  whole_command = prepare_command(command)
+  whole_command = command .. '\r'
   if Cfg.runner_is_open == true then
     send_kitty_command(Cfg.run_cmd, whole_command)
   else
