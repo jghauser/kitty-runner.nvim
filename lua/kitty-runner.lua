@@ -94,6 +94,7 @@ end
 local function define_keymaps()
   nvim_set_keymap('n', '<leader>tr', ':KittyRunCommand<cr>', {})
   nvim_set_keymap('x', '<leader>ts', ':KittySendLines<cr>', {})
+  nvim_set_keymap('n', '<leader>ts', ':KittySendLines<cr>', {})
   nvim_set_keymap('n', '<leader>tc', ':KittyClearRunner<cr>', {})
   nvim_set_keymap('n', '<leader>tk', ':KittyKillRunner<cr>', {})
   nvim_set_keymap('n', '<leader>tl', ':KittyReRunCommand<cr>', {})
