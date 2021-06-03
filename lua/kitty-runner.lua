@@ -108,7 +108,11 @@ function M.setup(cfg_)
   Cfg.runner_name = 'vim-cmd' .. uuid
   Cfg.run_cmd = Cfg.run_cmd or {'send-text', '--match=title:' .. Cfg.runner_name}
   Cfg.kill_cmd = Cfg.kill_cmd or {'close-window', '--match=title:' .. Cfg.runner_name}
-  Cfg.use_keymaps = Cfg.use_keymaps or true
+  if Cfg.use_keymaps ~= nil then
+    Cfg.use_keymaps = Cfg.use_keymaps
+  else
+    Cfg.use_keymaps = true
+  end
   math.randomseed(os.time())
   Cfg.kitty_port = 'unix:/tmp/kitty' .. math.random(10000, 99999)
   Cfg.kitty_win_args = Cfg.kitty_win_args or ('--keep-focus --cwd=' .. os.getenv('PWD'))
