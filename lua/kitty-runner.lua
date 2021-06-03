@@ -115,7 +115,6 @@ function M.setup(cfg_)
   end
   math.randomseed(os.time())
   Cfg.kitty_port = 'unix:/tmp/kitty' .. math.random(10000, 99999)
-  Cfg.kitty_win_args = Cfg.kitty_win_args or ('--keep-focus --cwd=' .. os.getenv('PWD'))
   define_commands()
   if Cfg.use_keymaps == true then
     define_keymaps()
