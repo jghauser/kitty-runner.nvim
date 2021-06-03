@@ -25,7 +25,7 @@ This plugin may require neovim 0.5.
 
 With packer:
 
-```
+```lua
 use {
   'jghauser/kitty-runner.nvim',
   config = function()
@@ -36,10 +36,20 @@ use {
 
 ## Configuration
 
-The setup function allows adjusting various settings.
+The setup function allows adjusting various settings. By default it sets the following:
+
+```lua
+
+require('kitty-runner').setup({
+  run_cmd = {'send-text', '--match=title:' .. Cfg.runner_name} --kitty arguments when sending lines/command
+  kill_cmd = {'close-window', '--match=title:' .. Cfg.runner_name} --kitty arguments when killing a runner
+  use_keymaps = true --use keymaps
+})
+
+
+```
 
 ## TODO
 
 - First time the commands are run should spawn the terminal AND run the commands
-- Improve documentation
 - Improve code legibility and comments
