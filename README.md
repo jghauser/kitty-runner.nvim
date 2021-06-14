@@ -1,9 +1,10 @@
 # kitty-runner.nvim
+
 A neovim plugin written in lua that allows you to easily send lines from the current buffer to another kitty terminal. I use it mostly as a poor man's REPL, e.g. I start ipython in the kitty terminal and send buffer lines to it.
 
-This plugin is inspired by and heavily borrows from [vim-kitty-runner](https://github.com/LkeMitchll/vim-kitty-runner). It was mostly created in an attempt to learn some lua and in a somewhat pointless effort to lua-ify my neovim setup. It's very much WIP though it's held up reasonably well in my own use.
+This plugin is inspired by and heavily borrows from [vim-kitty-runner](https://github.com/LkeMitchll/vim-kitty-runner).
 
-It currently (attempts) to do the following:
+The plugin implements the following:
 
 - When first running `:KittySendLines` or `:KittyRunCommand`, a new kitty terminal is spawned (the 'runner').
 - Further invocations of these commands do the following
@@ -19,7 +20,7 @@ It currently (attempts) to do the following:
   - `<leader>tk`: `:KittyKillRunner`
   - `<leader>tl`: `:KittyReRunCommand`
 
-This plugin may require neovim 0.5.
+This plugin may require neovim 0.5. Let me know if you found any problems or have ideas for improvement!
 
 ## Installation
 
