@@ -42,6 +42,8 @@ end
 
 function M.run_command(region)
   whole_command = prepare_command(region)
+  -- delete visual selection marks
+  vim.cmd([[delm <>]])
   if Cfg.runner_is_open == true then
     send_kitty_command(Cfg.run_cmd, whole_command)
   else
