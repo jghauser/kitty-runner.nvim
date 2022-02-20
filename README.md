@@ -4,6 +4,8 @@ A neovim plugin written in lua that allows you to easily send lines from the cur
 
 This plugin is inspired by and heavily borrows from [vim-kitty-runner](https://github.com/LkeMitchll/vim-kitty-runner).
 
+# Functionality
+
 The plugin implements the following:
 
 - When first running `:KittySendLines` or `:KittyRunCommand`, a new kitty terminal is spawned (the 'runner').
