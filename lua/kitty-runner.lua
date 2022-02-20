@@ -2,6 +2,7 @@
 -- KITTY RUNNER
 --
 
+-- TODO: put setup function, keymaps, commands in other file
 
 local fn = vim.fn
 local cmd = vim.cmd
@@ -14,7 +15,7 @@ local whole_command
 
 local function open_new_runner()
   loop.spawn('kitty', {
-    args = {'-o', 'allow_remote_control=yes', '--listen-on=' .. Cfg.kitty_port, '--title=' .. Cfg.runner_name}})
+    args = {'-o', 'allow_remote_control=yes', '--listen-on=' .. Cfg.kitty_port}})
   Cfg.runner_is_open = true
 end
 
@@ -41,6 +42,8 @@ local function prepare_command(region)
 end
 
 function M.run_command(region)
+  -- TODO send command even the first time opening a runner
+  -- the problem is that we need to wait until the terminal is properly open
   whole_command = prepare_command(region)
   -- delete visual selection marks
   vim.cmd([[delm <>]])
@@ -48,6 +51,7 @@ function M.run_command(region)
     send_kitty_command(Cfg.run_cmd, whole_command)
   else
     open_new_runner()
+    send_kitty_command(Cfg.run_cmd, whole_command)
   end
 end
 
@@ -107,16 +111,15 @@ function M.setup(cfg_)
   local uuid_handle = io.popen[[uuidgen|sed 's/.*/&/']]
   local uuid = uuid_handle:read("*a")
   uuid_handle:close()
-  Cfg.runner_name = 'vim-cmd' .. uuid
-  Cfg.run_cmd = Cfg.run_cmd or {'send-text', '--match=title:' .. Cfg.runner_name}
-  Cfg.kill_cmd = Cfg.kill_cmd or {'close-window', '--match=title:' .. Cfg.runner_name}
+  Cfg.run_cmd = Cfg.run_cmd or {'send-text'}
+  Cfg.kill_cmd = Cfg.kill_cmd or {'close-window'}
   if Cfg.use_keymaps ~= nil then
     Cfg.use_keymaps = Cfg.use_keymaps
   else
     Cfg.use_keymaps = true
   end
   math.randomseed(os.time())
-  Cfg.kitty_port = 'unix:/tmp/kitty' .. math.random(10000, 99999)
+  Cfg.kitty_port = 'unix:/tmp/kitty' .. '-' .. uuid
   define_commands()
   if Cfg.use_keymaps == true then
     define_keymaps()
