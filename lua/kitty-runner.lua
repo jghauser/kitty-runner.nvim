@@ -51,6 +51,8 @@ function M.run_command(region)
     send_kitty_command(Cfg.run_cmd, whole_command)
   else
     open_new_runner()
+    -- TODO: fix this hack
+    os.execute("sleep .3")
     send_kitty_command(Cfg.run_cmd, whole_command)
   end
 end
