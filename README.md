@@ -20,7 +20,7 @@ The plugin implements the following:
   - `<leader>tk`: `:KittyKillRunner`
   - `<leader>tl`: `:KittyReRunCommand`
 
-This plugin may require neovim 0.5. Let me know if you found any problems or have ideas for improvement!
+This plugin may require neovim 0.5. It has only been tested on Linux. Let me know if you found any problems or have ideas for improvement!
 
 ## Installation
 
@@ -52,5 +52,6 @@ require('kitty-runner').setup({
 
 ## TODO
 
-- First time the commands are run should spawn the terminal AND run the commands
+- Find a non-hacky way of running a command *and* spawning the terminal on first invocation
 - Improve code legibility and comments
+- Documentation
