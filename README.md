@@ -6,21 +6,19 @@ This plugin is inspired by and heavily borrows from [vim-kitty-runner](https://g
 
 # Functionality
 
-The plugin implements the following:
-
-- When first running `:KittySendLines` or `:KittyRunCommand`, a new kitty terminal is spawned (the 'runner').
-- Further invocations of these commands do the following
-  - `:KittySendLines`: Send the line at the current cursor position or the lines of current visual selection
-  - `:KittyRunCommand`: Prompt for a command and send it
+The plugin implements the following commands:
+- `:KittySendLines`: Send the line at the current cursor position or the lines of current visual selection
+- `:KittyRunCommand`: Prompt for a command and send it
 - `:KittyReRunCommand`: Send the last command
 - `:KittyClearRunner`: Clear the runner's screen
 - `:KittyKillRunner`: Kill the runner
-- By default a number of keymaps are created (see below to turn this off):
-  - `<leader>tr`: `:KittyRunCommand`
-  - `<leader>ts`: `:KittySendLines`
-  - `<leader>tc`: `:KittyClearRunner`
-  - `<leader>tk`: `:KittyKillRunner`
-  - `<leader>tl`: `:KittyReRunCommand`
+
+By default a number of keymaps are created (see below to turn this off):
+- `<leader>tr`: `:KittyRunCommand`
+- `<leader>ts`: `:KittySendLines`
+- `<leader>tc`: `:KittyClearRunner`
+- `<leader>tk`: `:KittyKillRunner`
+- `<leader>tl`: `:KittyReRunCommand`
 
 This plugin may require neovim 0.5. It has only been tested on Linux. Let me know if you found any problems or have ideas for improvement!
 
