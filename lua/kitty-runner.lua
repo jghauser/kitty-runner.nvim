@@ -111,7 +111,7 @@ end
 function M.setup(cfg_)
   Cfg = cfg_ or {}
   local uuid_handle = io.popen[[uuidgen|sed 's/.*/&/']]
-  local uuid = uuid_handle:read("*a")
+  local uuid = uuid_handle:read("*l")
   uuid_handle:close()
   Cfg.runner_name = Cfg.runner_name or 'kitty-runner' .. uuid
   Cfg.run_cmd = Cfg.run_cmd or {'send-text'}
