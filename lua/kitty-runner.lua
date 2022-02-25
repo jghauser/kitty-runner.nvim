@@ -113,7 +113,7 @@ function M.setup(cfg_)
   local uuid_handle = io.popen[[uuidgen]]
   local uuid = uuid_handle:read("*l")
   uuid_handle:close()
-  Cfg.runner_name = Cfg.runner_name or 'kitty-runner' .. uuid
+  Cfg.runner_name = Cfg.runner_name or ('kitty-runner' .. '-' .. uuid)
   Cfg.run_cmd = Cfg.run_cmd or {'send-text'}
   Cfg.kill_cmd = Cfg.kill_cmd or {'close-window'}
   if Cfg.use_keymaps ~= nil then
