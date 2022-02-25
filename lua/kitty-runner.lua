@@ -15,7 +15,7 @@ local whole_command
 
 local function open_new_runner()
   loop.spawn('kitty', {
-    args = {'-o', 'allow_remote_control=yes', '--listen-on=' .. Cfg.kitty_port}})
+    args = {'-o', 'allow_remote_control=yes', '--listen-on=' .. Cfg.kitty_port, '--title=' .. Cfg.runner_name}})
   Cfg.runner_is_open = true
 end
 
@@ -113,6 +113,7 @@ function M.setup(cfg_)
   local uuid_handle = io.popen[[uuidgen|sed 's/.*/&/']]
   local uuid = uuid_handle:read("*a")
   uuid_handle:close()
+  Cfg.runner_name = Cfg.runner_name or 'kitty-runner' .. uuid
   Cfg.run_cmd = Cfg.run_cmd or {'send-text'}
   Cfg.kill_cmd = Cfg.kill_cmd or {'close-window'}
   if Cfg.use_keymaps ~= nil then
