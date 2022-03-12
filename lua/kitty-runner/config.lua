@@ -41,6 +41,7 @@ M.define_commands = function()
     command! -range KittySendLines lua require('kitty-runner').run_command(vim.region(0, vim.fn.getpos("'<"), vim.fn.getpos("'>"), "l", false)[0])
     command! KittyRunCommand lua require('kitty-runner').prompt_run_command()
     command! KittyClearRunner lua require('kitty-runner').clear_runner()
+    command! KittyOpenRunner lua require('kitty-runner').open_runner()
     command! KittyKillRunner lua require('kitty-runner').kill_runner()
   ]])
 end
@@ -53,6 +54,7 @@ M.define_keymaps = function()
   nvim_set_keymap('n', '<leader>tc', ':KittyClearRunner<cr>', {})
   nvim_set_keymap('n', '<leader>tk', ':KittyKillRunner<cr>', {})
   nvim_set_keymap('n', '<leader>tl', ':KittyReRunCommand<cr>', {})
+  nvim_set_keymap('n', '<leader>to', ':KittyOpenRunner<cr>', {})
 end
 
 return M
