@@ -48,13 +48,13 @@ end
 
 -- define default keymaps
 M.define_keymaps = function()
-  nvim_set_keymap('n', '<leader>tr', ':KittyRunCommand<cr>', {})
-  nvim_set_keymap('x', '<leader>ts', ':KittySendLines<cr>', {})
-  nvim_set_keymap('n', '<leader>ts', ':KittySendLines<cr>', {})
-  nvim_set_keymap('n', '<leader>tc', ':KittyClearRunner<cr>', {})
-  nvim_set_keymap('n', '<leader>tk', ':KittyKillRunner<cr>', {})
-  nvim_set_keymap('n', '<leader>tl', ':KittyReRunCommand<cr>', {})
-  nvim_set_keymap('n', '<leader>to', ':KittyOpenRunner<cr>', {})
+  nvim_set_keymap('n', '<leader>tr', ':KittyRunCommand<cr>', {silent = true})
+  nvim_set_keymap('x', '<leader>ts', ':KittySendLines<cr>', {silent = true})
+  nvim_set_keymap('n', '<leader>ts', ':KittySendLines<cr>', {silent = true})
+  nvim_set_keymap('n', '<leader>tc', ':KittyClearRunner<cr>', {silent = true})
+  nvim_set_keymap('n', '<leader>tk', ':KittyKillRunner<cr>', {silent = true})
+  nvim_set_keymap('n', '<leader>tl', ':KittyReRunCommand<cr>', {silent = true})
+  nvim_set_keymap('n', '<leader>to', ':KittyOpenRunner<cr>', {silent = true})
 end
 
 return M
