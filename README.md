@@ -43,10 +43,15 @@ The setup function allows adjusting various settings. By default it sets the fol
 
 ```lua
 require('kitty-runner').setup({
-  runner_name = 'kitty-runner-' .. uuid,    -- name of the kitty terminal
-  run_cmd = {'send-text'},                        -- kitty arguments when sending lines/command
-  kill_cmd = {'close-window'},                    -- kitty arguments when killing a runner
-  use_keymaps = true,                             -- use default keymaps
-  kitty_port = 'unix:/tmp/kitty-' .. uuid,  -- the port used to communicate with the kitty terminal
+  -- name of the kitty terminal:
+  runner_name = 'kitty-runner-' .. uuid,
+  -- kitty arguments when sending lines/command:
+  run_cmd = {'send-text'},
+  -- kitty arguments when killing a runner:
+  kill_cmd = {'close-window'},
+  -- use default keymaps:
+  use_keymaps = true,
+  -- the port used to communicate with the kitty terminal:
+  kitty_port = 'unix:/tmp/kitty-' .. uuid,
 })
 ```
