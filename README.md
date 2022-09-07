@@ -30,9 +30,9 @@ With packer:
 
 ```lua
 use {
-  'jghauser/kitty-runner.nvim',
+  "jghauser/kitty-runner.nvim",
   config = function()
-    require('kitty-runner').setup()
+    require("kitty-runner").setup()
   end
 }
 ```
@@ -42,16 +42,16 @@ use {
 The setup function allows adjusting various settings. By default it sets the following:
 
 ```lua
-require('kitty-runner').setup({
+require("kitty-runner").setup({
   -- name of the kitty terminal:
-  runner_name = 'kitty-runner-' .. uuid,
+  runner_name = "kitty-runner-" .. uuid,
   -- kitty arguments when sending lines/command:
-  run_cmd = {'send-text'},
+  run_cmd = {"send-text", "--"},
   -- kitty arguments when killing a runner:
-  kill_cmd = {'close-window'},
+  kill_cmd = {"close-window"},
   -- use default keymaps:
   use_keymaps = true,
   -- the port used to communicate with the kitty terminal:
-  kitty_port = 'unix:/tmp/kitty-' .. uuid,
+  kitty_port = "unix:/tmp/kitty-" .. uuid,
 })
 ```

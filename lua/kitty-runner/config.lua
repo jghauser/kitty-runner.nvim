@@ -18,7 +18,7 @@ local uuid = get_uuid()
 -- default configulation values
 local default_config = {
 	runner_name = "kitty-runner-" .. uuid,
-	run_cmd = { "send-text" },
+	run_cmd = { "send-text", "--" },
 	kill_cmd = { "close-window" },
 	use_keymaps = true,
 	kitty_port = "unix:/tmp/kitty-" .. uuid,
