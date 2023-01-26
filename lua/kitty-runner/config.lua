@@ -4,6 +4,7 @@
 
 local cmd = vim.cmd
 local nvim_set_keymap = vim.api.nvim_set_keymap
+local M = {}
 
 -- get uuid
 local function get_uuid()
@@ -12,6 +13,8 @@ local function get_uuid()
 	uuid_handle:close()
 	return uuid
 end
+
+M.uuid = get_uuid
 
 local uuid = get_uuid()
 
@@ -22,9 +25,21 @@ local default_config = {
 	kill_cmd = { "close-window" },
 	use_keymaps = true,
 	kitty_port = "unix:/tmp/kitty-" .. uuid,
+	mode = "os-window"
 }
 
-local M = vim.deepcopy(default_config)
+local window_config = {
+	runner_name = "kitty-runner-" .. uuid,
+	run_cmd = { "send-text", "--match=title:" .. "kitty-runner-" .. uuid },
+	kill_cmd = { "close-window", "--match=title:" .. "kitty-runner-" .. uuid },
+	use_keymaps = true,
+	kitty_port = "unix:/tmp/kitty",
+	mode = "window"
+}
+
+M = vim.deepcopy(default_config)
+M.default_config = default_config
+M.window_config = window_config
 
 -- configuration update function
 M.update = function(opts)
