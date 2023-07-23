@@ -53,5 +53,33 @@ require("kitty-runner").setup({
   use_keymaps = true,
   -- the port used to communicate with the kitty terminal:
   kitty_port = "unix:/tmp/kitty-" .. uuid,
+  -- the type of window that kitty will create:
+  -- - os-window = a new window
+  -- - window = a new split within the current window (see below)
+  -- - More info: https://sw.kovidgoyal.net/kitty/glossary/#term-os_window
+  mode = "os-window"
 })
+```
+
+### Window Mode
+
+By default `kitty-runner` will open OS level windows, if you would like to open "kitty windows" or splits inside your current window you can configure like so:
+
+
+```lua
+local opts = require("kitty-runner.config").window_config
+require("kitty-runner").setup(opts)
+```
+
+...which will setup the following:
+
+```lua
+{
+  runner_name = "kitty-runner-" .. uuid,
+  run_cmd = { "send-text", "--match=title:" .. "kitty-runner-" .. uuid },
+  kill_cmd = { "close-window", "--match=title:" .. "kitty-runner-" .. uuid },
+  use_keymaps = true,
+  kitty_port = "unix:/tmp/kitty",
+  mode = "window"
+}
 ```
