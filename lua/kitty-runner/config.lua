@@ -63,13 +63,16 @@ end
 
 -- define default keymaps
 M.define_keymaps = function()
-  nvim_set_keymap("n", "<leader>tr", ":KittyRunCommand<cr>", { silent = true })
-  nvim_set_keymap("x", "<leader>ts", ":KittySendLines<cr>", { silent = true })
-  nvim_set_keymap("n", "<leader>ts", ":KittySendLines<cr>", { silent = true })
-  nvim_set_keymap("n", "<leader>tc", ":KittyClearRunner<cr>", { silent = true })
-  nvim_set_keymap("n", "<leader>tk", ":KittyKillRunner<cr>", { silent = true })
-  nvim_set_keymap("n", "<leader>tl", ":KittyReRunCommand<cr>", { silent = true })
-  nvim_set_keymap("n", "<leader>to", ":KittyOpenRunner<cr>", { silent = true })
+  nvim_set_keymap("n", "<leader>tr", ":KittyRunCommand<cr>",
+    { silent = true, desc = "Run a command in a Kitty runner" })
+  nvim_set_keymap("x", "<leader>ts", ":KittySendLines<cr>", { silent = true, desc = "Send lines to a Kitty runner" })
+  nvim_set_keymap("n", "<leader>ts", ":KittySendLines<cr>", { silent = true, desc = "Send lines to a Kitty runner" })
+  nvim_set_keymap("n", "<leader>tc", ":KittyClearRunner<cr>",
+    { silent = true, desc = "Clear the screen in the Kitty runner" })
+  nvim_set_keymap("n", "<leader>tk", ":KittyKillRunner<cr>", { silent = true, desc = "Kill the Kitty runner" })
+  nvim_set_keymap("n", "<leader>tl", ":KittyReRunCommand<cr>",
+    { silent = true, desc = "Re-run the last Kitty runner command" })
+  nvim_set_keymap("n", "<leader>to", ":KittyOpenRunner<cr>", { silent = true, desc = "Open a Kitty runner" })
 end
 
 return M
