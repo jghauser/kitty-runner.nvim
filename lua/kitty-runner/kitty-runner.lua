@@ -13,6 +13,9 @@ local runner_is_open = false
 
 local function send_kitty_command(cmd_args, command)
   local args = { "@", "--to=" .. config["kitty_port"] }
+  if config["mode"] == "window" then
+    args = { "@" }
+  end
   for _, v in pairs(cmd_args) do
     table.insert(args, v)
   end
