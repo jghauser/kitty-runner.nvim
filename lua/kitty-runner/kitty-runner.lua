@@ -45,8 +45,8 @@ local function prepare_command(region)
   else
     lines = vim.api.nvim_buf_get_lines(0, region[1] - 1, region[2], true)
   end
-  local command = table.concat(lines, "\r") .. "\r"
-  return command
+  local command = table.concat(lines, "\r")
+  return "\\e[200~" .. command .. "\\e[201~" .. "\r"
 end
 
 function M.open_runner()
