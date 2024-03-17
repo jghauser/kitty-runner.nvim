@@ -66,24 +66,30 @@ function M.open_runner()
   if runner_is_open == false then
     if config["mode"] == "os-window" then
       loop.spawn("kitty", {
-        args = {
-          "-o",
-          "allow_remote_control=yes",
-          "--listen-on=" .. config["kitty_port"],
-          "--title=" .. config["runner_name"],
+          args = {
+            "-o",
+            "allow_remote_control=yes",
+            "--listen-on=" .. config["kitty_port"],
+            "--title=" .. config["runner_name"],
+          },
         },
-      })
+        function(_, _)
+          runner_is_open = false
+        end)
       runner_is_open = true
     elseif config["mode"] == "window" then
       loop.spawn("kitty", {
-        args = {
-          "@",
-          "launch",
-          "--title=" .. config["runner_name"],
-          "--keep-focus",
-          "--cwd=" .. vim.fn.getcwd()
+          args = {
+            "@",
+            "launch",
+            "--title=" .. config["runner_name"],
+            "--keep-focus",
+            "--cwd=" .. vim.fn.getcwd()
+          },
         },
-      })
+        function(_, _)
+          runner_is_open = false
+        end)
       runner_is_open = true
     end
   end
