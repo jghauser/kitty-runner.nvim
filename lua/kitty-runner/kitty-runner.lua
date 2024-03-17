@@ -27,7 +27,7 @@ local function open_and_or_send(command)
     send_kitty_command(config["run_cmd"], command)
   else
     M.open_runner()
-    -- TODO: fix this hack
+    -- HACK: wait a bit until the kitty window has opened
     os.execute("sleep .3")
     send_kitty_command(config["run_cmd"], command)
   end
