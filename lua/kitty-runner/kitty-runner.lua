@@ -11,6 +11,19 @@ local M = {}
 local whole_command
 local runner_is_open = false
 
+local function escape_escape_chars(string)
+  return (string:gsub([[\\]], [[\\\]])
+    :gsub([[\a]], [[\\a]])
+    :gsub([[\b]], [[\\b]])
+    :gsub([[\f]], [[\\f]])
+    :gsub([[\n]], [[\\n]])
+    :gsub([[\r]], [[\\r]])
+    :gsub([[\t]], [[\\t]])
+    :gsub([[\v]], [[\\v]])
+    :gsub([[\"]], [[\\"]])
+    :gsub([[\']], [[\\']]))
+end
+
 local function send_kitty_command(cmd_args, command)
   local args = { "@", "--to=" .. config["kitty_port"] }
   for _, v in pairs(cmd_args) do
@@ -46,7 +59,7 @@ local function prepare_command(region)
     lines = vim.api.nvim_buf_get_lines(0, region[1] - 1, region[2], true)
   end
   local command = table.concat(lines, "\r")
-  return "\\e[200~" .. command .. "\\e[201~" .. "\r"
+  return "\\e[200~" .. escape_escape_chars(command) .. "\\e[201~" .. "\r"
 end
 
 function M.open_runner()
@@ -93,7 +106,7 @@ function M.prompt_run_command()
   fn.inputsave()
   local command = fn.input("Command: ")
   fn.inputrestore()
-  whole_command = command .. "\r"
+  whole_command = escape_escape_chars(command) .. "\r"
   open_and_or_send(whole_command)
 end
 
