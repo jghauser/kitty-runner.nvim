@@ -4,14 +4,18 @@
 
 local cmd = vim.cmd
 local nvim_set_keymap = vim.api.nvim_set_keymap
+local random = math.random
 local M = {}
 
--- get uuid
+-- create uuid
+-- from https://gist.github.com/jrus/3197011
 local function get_uuid()
-  local uuid_handle = io.popen([[uuidgen]])
-  local uuid = uuid_handle:read("*l")
-  uuid_handle:close()
-  return uuid
+  math.randomseed(tonumber(tostring(os.time()):reverse():sub(1, 9)))
+  local template = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'
+  return string.gsub(template, '[xy]', function(c)
+    local v = (c == 'x') and random(0, 0xf) or random(8, 0xb)
+    return string.format('%x', v)
+  end)
 end
 
 M.uuid = get_uuid
