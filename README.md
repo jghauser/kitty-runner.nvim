@@ -37,6 +37,17 @@ use {
 }
 ```
 
+With lazy.nvim:
+
+```lua
+{
+  "jghauser/kitty-runner.nvim",
+  config = function()
+    require("kitty-runner").setup()
+  end
+}
+```
+
 ## Configuration
 
 The setup function allows adjusting various settings. By default it sets the following:
