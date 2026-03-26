@@ -29,7 +29,11 @@ local default_config = {
   kill_cmd = { "close-window" },
   use_keymaps = true,
   kitty_port = "unix:/tmp/kitty-" .. uuid,
-  mode = "os-window"
+  mode = "os-window",
+  format_sent_text = function(lines, filetype)
+    return table.concat(lines, "\r")
+  end,
+  auto_enter = true
 }
 
 local window_config = {

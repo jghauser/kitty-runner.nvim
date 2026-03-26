@@ -58,8 +58,10 @@ local function prepare_command(region)
   else
     lines = vim.api.nvim_buf_get_lines(0, region[1] - 1, region[2], true)
   end
-  local command = table.concat(lines, "\r")
-  return "\\e[200~" .. escape_escape_chars(command) .. "\\e[201~" .. "\r"
+  local filetype = vim.bo.filetype
+  local raw_command = config.format_sent_text(lines, filetype)
+  local suffix = config.auto_enter and "\r" or ""
+  return "\\e[200~" .. escape_escape_chars(raw_command) .. "\\e[201~" .. suffix
 end
 
 function M.open_runner()

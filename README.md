@@ -68,7 +68,15 @@ require("kitty-runner").setup({
   -- - os-window = a new window
   -- - window = a new split within the current window (see below)
   -- - More info: https://sw.kovidgoyal.net/kitty/glossary/#term-os_window
-  mode = "os-window"
+  mode = "os-window",
+  -- Function to customize how lines are formatted before sending.
+  -- Receives lines (table of strings) and filetype (string).
+  -- Must return a string to be inserted between escape codes.
+  format_sent_text = function(lines, filetype)
+    return table.concat(lines, "\r")
+  end,
+  -- If true, automatically append carriage return after escape sequences.
+  auto_enter = true
 })
 ```
 
