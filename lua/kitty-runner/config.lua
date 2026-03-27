@@ -30,7 +30,7 @@ local default_config = {
   use_keymaps = true,
   kitty_port = "unix:/tmp/kitty-" .. uuid,
   mode = "os-window",
-  format_sent_text = function(lines, filetype)
+  format_sent_text = function(lines, ctx)
     return table.concat(lines, "\r")
   end,
   auto_enter = true

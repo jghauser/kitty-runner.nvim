@@ -58,8 +58,11 @@ local function prepare_command(region)
   else
     lines = vim.api.nvim_buf_get_lines(0, region[1] - 1, region[2], true)
   end
-  local filetype = vim.bo.filetype
-  local raw_command = config.format_sent_text(lines, filetype)
+  local ctx = {
+    filetype = vim.bo.filetype,
+    filepath = vim.api.nvim_buf_get_name(0),
+  }
+  local raw_command = config.format_sent_text(lines, ctx)
   local suffix = config.auto_enter and "\r" or ""
   return "\\e[200~" .. escape_escape_chars(raw_command) .. "\\e[201~" .. suffix
 end

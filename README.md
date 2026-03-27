@@ -70,9 +70,9 @@ require("kitty-runner").setup({
   -- - More info: https://sw.kovidgoyal.net/kitty/glossary/#term-os_window
   mode = "os-window",
   -- Function to customize how lines are formatted before sending.
-  -- Receives lines (table of strings) and filetype (string).
+  -- Receives lines (table of strings) and ctx (table with filetype and filepath).
   -- Must return a string to be inserted between escape codes.
-  format_sent_text = function(lines, filetype)
+  format_sent_text = function(lines, ctx)
     return table.concat(lines, "\r")
   end,
   -- If true, automatically append carriage return after escape sequences.
