@@ -26,6 +26,9 @@ end
 
 local function send_kitty_command(cmd_args, command)
   local args = { "@", "--to=" .. config["kitty_port"] }
+  if config["mode"] == "window" then
+    args = { "@" }
+  end
   for _, v in pairs(cmd_args) do
     table.insert(args, v)
   end
@@ -91,10 +94,7 @@ function M.open_runner()
             "--keep-focus",
             "--cwd=" .. vim.fn.getcwd()
           },
-        },
-        function(_, _)
-          runner_is_open = false
-        end)
+        })
       runner_is_open = true
     end
   end
